@@ -8,7 +8,11 @@
 ##   cm <- makeCacheMatrix(m1)
 ##
 
-makeCacheMatrix <- function(x = numeric()) {
+makeCacheMatrix <- function(x) {
+        if(!is.matrix(x) || length(dim(x)) != 2 || dim(x)[1] != dim(x)[2]) {
+                message("argument is not a square matrix")
+                return(NULL)
+        }
         m <- NULL
         set <- function(y) {
                 x <<- y
